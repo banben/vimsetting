@@ -1,10 +1,10 @@
 set nocompatible
 filetype on
- 
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
- 
- 
+
+
 " 这里根据自己需要的插件来设置，以下是我的配置 "
 "
 " YouCompleteMe:语句补全插件
@@ -27,13 +27,13 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"             " 回车即�
 nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>     " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=2                 " 从第2个键入字符就开始罗列匹配项
 "
- 
- 
- 
+
+
+
 " github 仓库中的插件 "
 Plugin 'VundleVim/Vundle.vim'
- 
- 
+
+
 Plugin 'vim-airline/vim-airline'
 "vim-airline配置:优化vim界面"
 "let g:airline#extensions#tabline#enabled = 1
@@ -64,9 +64,9 @@ map <leader>6 :b 6<CR>
 map <leader>7 :b 7<CR>
 map <leader>8 :b 8<CR>
 map <leader>9 :b 9<CR>
- 
- 
- 
+
+
+
 " vim-scripts 中的插件 "
 Plugin 'taglist.vim'
 "ctags 配置:F3快捷键显示程序中的各种tags，包括变量和函数等。
@@ -75,47 +75,47 @@ let Tlist_Use_Right_Window=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_WinWidt=25
- 
+
 Plugin 'The-NERD-tree'
 "NERDTree 配置:F2快捷键显示当前目录树
 map <F2> :NERDTreeToggle<CR>
-let NERDTreeWinSize=25 
- 
+let NERDTreeWinSize=25
+
 Plugin 'indentLine.vim'
 Plugin 'delimitMate.vim'
- 
+
 " 非 github 仓库的插件"
 " Plugin 'git://git.wincent.com/command-t.git'
 " 本地仓库的插件 "
- 
+
 call vundle#end()
- 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""新文件标题
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1, "##########################################################################") 
-		call append(line("."), "# File Name: ".expand("%")) 
-		call append(line(".")+1, "# Author: amoscykl") 
-		call append(line(".")+2, "# mail: amoscykl980629@163.com") 
-		call append(line(".")+3, "# Created Time: ".strftime("%c")) 
-		call append(line(".")+4, "#########################################################################") 
+"新建.c,.h,.sh,.java文件，自动插入文件头
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+""定义函数SetTitle，自动插入文件头
+func SetTitle()
+	"如果文件类型为.sh文件
+	if &filetype == 'sh'
+		call setline(1, "##########################################################################")
+		call append(line("."), "# File Name: ".expand("%"))
+		call append(line(".")+1, "# Author: amoscykl")
+		call append(line(".")+2, "# mail: amoscykl980629@163.com")
+		call append(line(".")+3, "# Created Time: ".strftime("%c"))
+		call append(line(".")+4, "#########################################################################")
 		call append(line(".")+5, "#!/bin/zsh")
 		call append(line(".")+6, "PATH=/home/edison/bin:/home/edison/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/work/tools/gcc-3.4.5-glibc-2.3.6/bin")
 		call append(line(".")+7, "export PATH")
 		call append(line(".")+8, "")
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: amoscykl") 
-		call append(line(".")+2, "	> Mail: amoscykl@163.com ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
+	else
+		call setline(1, "/*************************************************************************")
+		call append(line("."), "	> File Name: ".expand("%"))
+		call append(line(".")+1, "	> Author: amoscykl")
+		call append(line(".")+2, "	> Mail: amoscykl@163.com ")
+		call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+		call append(line(".")+4, " ************************************************************************/")
 		call append(line(".")+5, "")
 	endif
 	if &filetype == 'cpp'
@@ -133,23 +133,23 @@ func SetTitle()
 	"	endif
 	"新建文件后，自动定位到文件末尾
 	autocmd BufNewFile * normal G
-endfunc 
+endfunc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
+
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
- 
+
 " 映射全选+复制 ctrl+a
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
 map <F12> gg=G
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y
- 
-colorscheme wombat256grf 
- 
+
+colorscheme wombat256grf
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""实用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -157,13 +157,13 @@ colorscheme wombat256grf
 set autoread
 " quickfix模式
 autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
-"代码补全 
-set completeopt=preview,menu 
-"允许插件  
+"代码补全
+set completeopt=preview,menu
+"允许插件
 filetype plugin on
-"共享剪贴板  
-set clipboard=unnamed 
-"从不备份  
+"共享剪贴板
+set clipboard=unnamed
+"从不备份
 set nobackup
 "make 运行
 :set makeprg=g++\ -Wall\ \ %
@@ -177,8 +177,8 @@ set guioptions-=m           " 隐藏菜单栏
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
 " 设置在状态行显示的信息
 set foldcolumn=0
-set foldmethod=indent 
-set foldlevel=3 
+set foldmethod=indent
+set foldlevel=3
 set foldenable              " 开始折叠
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
@@ -188,9 +188,6 @@ set syntax=on
 set noeb
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
-" 自动缩进
-set autoindent
-set cindent
 " Tab键的宽度
 set tabstop=4
 " 统一缩进为4
@@ -198,8 +195,6 @@ set softtabstop=4
 set shiftwidth=4
 " 不要用空格代替制表符
 set noexpandtab
-" 在行和段开始处使用制表符
-set smarttab
 " 显示行号
 set number
 " 历史记录数
@@ -279,7 +274,7 @@ function! ClosePair(char)
 		return a:char
 	endif
 endfunction
-filetype plugin indent on 
+filetype plugin indent on
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
